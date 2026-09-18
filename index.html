@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#030509">
+<meta name="version" content="0.1.0">
+<title>RE-HALLI // Marathahalli Chapter</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="scene-container" role="img" aria-label="Schematic 3D model of Marathahalli. Civic conditions are available in the Core Vitals HUD."></div>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="scanlines" aria-hidden="true"></div>
+  <div id="stinger-flash" aria-hidden="true"></div>
+
+  <header id="top-bar" class="glass-panel hud-layer">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <h1>RE<span>-</span>HALLI <span class="brand-chapter">MARATHAHALLI CHAPTER</span></h1>
+    </div>
+    <div class="command-status" role="group" aria-label="Quarter and budget in crore rupees">
+      <div id="turn-chip">Q1 · 2027</div>
+      <div id="budget-chip">₹ 120.0 CR</div>
+    </div>
+    <div class="command-actions">
+      <button id="btn-audio" type="button" class="icon-btn" title="Toggle audio (M)" aria-label="Toggle audio" aria-keyshortcuts="M">♪</button>
+      <button id="btn-help" type="button" class="icon-btn" title="Command manual" aria-label="Open command manual" aria-controls="help-modal">?</button>
+    </div>
+  </header>
+
+  <aside id="left-panel" class="glass-panel hud-layer" aria-label="Core vitals and faction standing" tabindex="0">
+    <h2 class="panel-title">Core Vitals <span class="panel-meta">CITY TELEMETRY</span></h2>
+    <div id="gauge-grid">
+      <div class="gauge" id="gauge-congestion">
+        <svg width="76" height="76" viewBox="0 0 100 100" role="img" aria-label="Congestion percentage; lower is better">
+          <circle class="g-track" cx="50" cy="50" r="41" fill="none" stroke-width="9"/>
+          <circle class="g-val" cx="50" cy="50" r="41" fill="none" stroke-width="9" stroke-linecap="butt" stroke-dasharray="257.6" stroke-dashoffset="257.6" transform="rotate(-90 50 50)"/>
+          <text x="50" y="46" text-anchor="middle" class="g-num" fill="#fff" font-size="20">50</text>
+          <text x="50" y="63" text-anchor="middle" font-size="11" fill="#7fd4e8">%</text>
+        </svg>
+        <div class="g-label">CONGESTION <span>↓</span></div>
+      </div>
+      <div class="gauge" id="gauge-eco">
+        <svg width="76" height="76" viewBox="0 0 100 100" role="img" aria-label="Ecology percentage; higher is better">
+          <circle class="g-track" cx="50" cy="50" r="41" fill="none" stroke-width="9"/>
+          <circle class="g-val" cx="50" cy="50" r="41" fill="none" stroke-width="9" stroke-linecap="butt" stroke-dasharray="257.6" stroke-dashoffset="257.6" transform="rotate(-90 50 50)"/>
+          <text x="50" y="46" text-anchor="middle" class="g-num" fill="#fff" font-size="20">50</text>
+          <text x="50" y="63" text-anchor="middle" font-size="11" fill="#7fd4e8">%</text>
+        </svg>
+        <div class="g-label">ECOLOGY <span>↑</span></div>
+      </div>
+      <div class="gauge" id="gauge-economy">
+        <svg width="76" height="76" viewBox="0 0 100 100" role="img" aria-label="Economy percentage; higher is better">
+          <circle class="g-track" cx="50" cy="50" r="41" fill="none" stroke-width="9"/>
+          <circle class="g-val" cx="50" cy="50" r="41" fill="none" stroke-width="9" stroke-linecap="butt" stroke-dasharray="257.6" stroke-dashoffset="257.6" transform="rotate(-90 50 50)"/>
+          <text x="50" y="46" text-anchor="middle" class="g-num" fill="#fff" font-size="20">50</text>
+          <text x="50" y="63" text-anchor="middle" font-size="11" fill="#7fd4e8">%</text>
+        </svg>
+        <div class="g-label">ECONOMY <span>↑</span></div>
+      </div>
+      <div class="gauge" id="gauge-approval">
+        <svg width="76" height="76" viewBox="0 0 100 100" role="img" aria-label="Approval percentage; higher is better">
+          <circle class="g-track" cx="50" cy="50" r="41" fill="none" stroke-width="9"/>
+          <circle class="g-val" cx="50" cy="50" r="41" fill="none" stroke-width="9" stroke-linecap="butt" stroke-dasharray="257.6" stroke-dashoffset="257.6" transform="rotate(-90 50 50)"/>
+          <text x="50" y="46" text-anchor="middle" class="g-num" fill="#fff" font-size="20">50</text>
+          <text x="50" y="63" text-anchor="middle" font-size="11" fill="#7fd4e8">%</text>
+        </svg>
+        <div class="g-label">APPROVAL <span>↑</span></div>
+      </div>
+    </div>
+
+    <div class="secondary-vitals">
+      <div class="meter-row">
+        <div class="m-head"><span>WATER <span class="meter-extra">SUPPLY</span> ↑</span><span id="water-num">60%</span></div>
+        <div class="m-bar" aria-hidden="true"><div class="m-fill" id="water-fill"></div></div>
+      </div>
+      <div class="meter-row">
+        <div class="m-head"><span><span class="meter-extra">MONSOON </span>FLOOD RISK ↓</span><span id="flood-num">10%</span></div>
+        <div class="m-bar" aria-hidden="true"><div class="m-fill" id="flood-fill"></div></div>
+      </div>
+      <div class="meter-row">
+        <div class="m-head"><span>AQI <span class="meter-extra">(AIR QUALITY)</span> ↓</span><span id="aqi-num">180</span></div>
+        <div class="m-bar" aria-hidden="true"><div class="m-fill" id="aqi-fill"></div></div>
+      </div>
+    </div>
+    <details class="faction-disclosure">
+      <summary class="panel-title">Faction Standing</summary>
+      <div id="faction-bars"></div>
+    </details>
+  </aside>
+
+  <details id="right-panel" class="hud-layer">
+    <summary class="glass-panel panel-title">City Intelligence <span class="disclosure-hint">WIRE / CASCADES</span></summary>
+    <div class="intelligence-content">
+      <section id="feed-panel" class="glass-panel" aria-label="Faction wire">
+        <h2 class="panel-title">Faction Wire</h2>
+        <div id="feed" role="log" aria-label="Faction reactions" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
+      </section>
+      <section id="intel-panel" class="glass-panel" aria-label="Pending cascades">
+        <h2 class="panel-title">Pending Cascade</h2>
+        <div id="intel-list"></div>
+      </section>
+      <section id="weather-panel" class="glass-panel" aria-label="Seasonal system">
+        <h2 class="panel-title">Seasonal System</h2>
+        <div id="weather-line">DRY SEASON · Q1 2027</div>
+      </section>
+    </div>
+  </details>
+
+  <aside class="map-key" aria-label="Schematic map legend">
+    <div class="map-reference"><span>BLR / SECTOR 12</span><span>12.9569 N 77.7011 E</span></div>
+    <div class="map-legend">
+      <span><i class="legend-road" aria-hidden="true"></i>Traffic</span>
+      <span><i class="legend-water" aria-hidden="true"></i>Water tankers</span>
+      <span><i class="legend-green" aria-hidden="true"></i>Green cover</span>
+      <span><i class="legend-alert" aria-hidden="true"></i>Crisis</span>
+    </div>
+    <p>SCHEMATIC SIMULATION · NOT FOR NAVIGATION</p>
+  </aside>
+
+  <div id="bottom-bar">
+    <section id="ticker-wrap" tabindex="0" aria-label="Civic news ticker"><div id="ticker"></div></section>
+    <button id="advance-btn" type="button" aria-keyshortcuts="Space">ADVANCE QUARTER<span class="sub">SPACE / NEXT DECISION</span></button>
+    <div class="credit-footer">Built by <a href="https://aasifj.com" target="_blank" rel="noopener noreferrer">Aasif Iqbal J</a> · <span class="credit-version">V0.1.0</span></div>
+  </div>
+
+  <div id="toast-wrap" role="status" aria-live="polite" aria-atomic="false"></div>
+
+  <div id="card-backdrop">
+    <section id="policy-card" class="glass-panel" role="dialog" aria-labelledby="card-title" aria-describedby="card-body" tabindex="-1">
+      <div id="card-header">
+        <span id="card-tag">CIVIC DOSSIER</span>
+        <span id="card-dossier">FILE #000</span>
+      </div>
+      <div id="card-title"></div>
+      <div id="card-body"></div>
+      <div id="card-intel" class="hidden"></div>
+      <div id="card-options"></div>
+    </section>
+  </div>
+
+  <div id="intro-screen" class="full-screen" role="dialog" aria-label="Welcome to Re-halli" tabindex="-1">
+    <div class="intro-box">
+      <div class="intro-eyebrow"><span class="signal-dot" aria-hidden="true"></span> BENGALURU / CIVIC COMMAND / 2027</div>
+      <h1>RE<span>-</span>HALLI</h1>
+      <div class="subtitle">MARATHAHALLI CHAPTER</div>
+      <p class="lore">The Outer Ring Road is a parking lot. The lakes are foam. The tankers own the water. As <b>Chief Urban Planner</b>, you inherit a city on the edge — and a desk full of impossible choices.</p>
+      <div class="mission-brief">
+        <div class="mission-heading"><span class="panel-title">Your mandate</span><strong>12 QUARTERS. ONE CITY.</strong></div>
+        <p>Keep Marathahalli functioning through a three-year term. Advance a quarter, weigh a policy, then manage its consequences. Today's shortcut can become next quarter's crisis.</p>
+        <div class="target-grid">
+          <div><span class="target-direction">REDUCE ↓</span><span>Congestion · Flood risk · AQI</span></div>
+          <div><span class="target-direction">PROTECT ↑</span><span>Ecology · Economy · Approval · Water</span></div>
+        </div>
+        <p class="threshold-note"><b>Collapse thresholds:</b> congestion at 100%, ecology, economy or approval at 0%, or treasury below −₹40 CR ends your mandate. Water shortages erode approval. Check Pending Cascade before advancing.</p>
+      </div>
+      <button id="start-btn" type="button">INITIATE COMMAND</button>
+      <div class="controls-hint"><span>DRAG — orbit · SCROLL — zoom</span><span>SPACE — advance · M — toggle audio</span><span>On touch screens, use the on-screen controls for policy decisions.</span></div>
+      <div class="intro-footer">12.9569 N 77.7011 E <span>SCHEMATIC / NOT FOR NAVIGATION</span><span>V0.1.0</span></div>
+    </div>
+  </div>
+
+  <div id="gameover-screen" class="full-screen" role="dialog" aria-labelledby="go-title" aria-describedby="go-cause" tabindex="-1">
+    <div class="gameover-box">
+      <h2 id="go-title">CIVIC COLLAPSE</h2>
+      <div id="go-rank"></div>
+      <div id="go-cause"></div>
+      <div id="go-stats"></div>
+      <button id="restart-btn" type="button" class="restart-btn">RUN IT BACK</button>
+    </div>
+  </div>
+
+  <div id="help-modal" role="dialog" aria-label="Command manual" tabindex="-1">
+    <div class="glass-panel">
+      <h3>COMMAND MANUAL</h3>
+      <p><b>Your goal: complete 12 quarters</b> while keeping the city functioning. Use <b>Advance Quarter</b> to bring the next decision to your desk. Read each option's costs and consequences before choosing.</p>
+      <ul>
+        <li><span class="kb">SPACE</span> — advance quarter. Use the visible buttons when navigating by keyboard or touch.</li>
+        <li><span class="kb">DRAG</span> — orbit · <span class="kb">SCROLL</span> — zoom · <span class="kb">M</span> — toggle audio.</li>
+        <li><b>Lower is better:</b> congestion, flood risk and AQI. <b>Higher is better:</b> ecology, economy, approval and water.</li>
+        <li><b>Collapse thresholds:</b> congestion at 100%, ecology, economy or approval at 0%, or treasury below −₹40 CR. Costs may use emergency credit. Lake fires begin below 25% ecology; water below 20% erodes approval.</li>
+        <li>Protect your budget. Choices can seed <b>future crises</b>; open <b>City Intelligence</b> to inspect Pending Cascade and faction reactions.</li>
+        <li>Core Vitals remain at the bottom on small screens. Open <b>Faction Standing</b> for the political balance. The map is schematic, not a navigation aid.</li>
+      </ul>
+      <p class="help-actions"><button id="help-close" type="button" class="icon-btn" aria-label="Close command manual">CLOSE</button></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
