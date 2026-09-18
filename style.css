@@ -179,6 +179,8 @@ p { margin: 0 0 12px; }
 .credit-footer a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid var(--cyan-dim); transition: text-shadow 0.2s, border-bottom-color 0.2s; }
 .credit-footer a:hover, .credit-footer a:focus-visible { text-shadow: 0 0 8px rgba(0, 229, 255, 0.6); border-bottom-color: var(--cyan); }
 .credit-version { color: var(--muted); opacity: 0.75; }
+.intro-footer a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid var(--cyan-dim); transition: text-shadow 0.2s, border-bottom-color 0.2s; }
+.intro-footer a:hover, .intro-footer a:focus-visible { text-shadow: 0 0 8px rgba(0, 229, 255, 0.6); border-bottom-color: var(--cyan); }
 
 #toast-wrap { position: fixed; top: var(--top); left: 50%; transform: translateX(-50%); width: min(440px, calc(100% - 32px)); display: flex; flex-direction: column; gap: 8px; z-index: 40; pointer-events: none; align-items: center; }
 .toast { max-width: 100%; padding: 10px 16px; font: 12px/1.5 'Share Tech Mono', monospace; background: rgba(4, 12, 24, 0.97); border: 1px solid var(--cyan-dim); color: #bdf3ff; box-shadow: 0 6px 24px #02060e; overflow-wrap: anywhere; animation: toast-in 0.4s, toast-out 0.5s ease 4.2s forwards; }
